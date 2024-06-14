@@ -72,8 +72,11 @@ export default class ConsentManager extends AutoConsentCMPBase {
   }
 
   async test() {
-    if (this.apiAvailable) {
-      return await this.mainWorldEval('EVAL_CONSENTMANAGER_5');
+    // Some CMP enabled websites don't report the status via API correctly.
+    // Fallback to DOM based check if so.
+    if (this.apiAvailable && !(await this.mainWorldEval('EVAL_CONSENTMANAGER_2'))) {
+      return true;
     }
+    return !this.elementVisible('#cmpbox', 'any')
   }
 }

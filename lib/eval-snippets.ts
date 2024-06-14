@@ -5,10 +5,9 @@ export const snippets = {
   // code-based rules
   EVAL_0: () => console.log(1),
   EVAL_CONSENTMANAGER_1: () => window.__cmp && typeof __cmp("getCMPData") === "object",
-  EVAL_CONSENTMANAGER_2: () => !__cmp('consentStatus').userChoiceExists,
+  EVAL_CONSENTMANAGER_2: () => __cmp('consentStatus').userChoiceExists,
   EVAL_CONSENTMANAGER_3: () => __cmp('setConsent', 0),
   EVAL_CONSENTMANAGER_4: () => __cmp('setConsent', 1),
-  EVAL_CONSENTMANAGER_5: () => __cmp('consentStatus').userChoiceExists,
   EVAL_COOKIEBOT_1: () => !!window.Cookiebot,
   EVAL_COOKIEBOT_2: () => !window.Cookiebot.hasResponse && window.Cookiebot.dialog?.visible === true,
   EVAL_COOKIEBOT_3: () => window.Cookiebot.withdraw() || true,
